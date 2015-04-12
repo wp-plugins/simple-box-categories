@@ -69,21 +69,26 @@
 *
 * Basic layout for the category cloud buttons.
 */
+.sbc-box-container {
+  text-align:center;
+  margin-bottom:15px;
+}
+
 .sbc-box {
-  float: left;
   font-family: "Open Sans", sans-serif;
   font-size: 10px;
   font-weight: 300;
-  margin: 2px;
+  margin: 1.5px -0.5px 1.5px -0.5px;
   padding: 5px 10px 5px 10px;
   text-transform: uppercase;
 }
 
+
 /* Used to set the margin-bottom after the last category button. */
-.sbc-box:last-child {
+/*.sbc-box:last-child {
   margin-bottom: 15px;
 }
-
+*/
 
 /**
 * #.# Button animations
