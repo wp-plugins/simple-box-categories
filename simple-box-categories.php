@@ -4,7 +4,7 @@
  * Plugin URI: http://www.tchernitchenko.com
  * Description: A simple and clean category widget.
  * Author: Alexander Tchernitchenko
- * Version: 1.0
+ * Version: 1.0.1
  * Author URI: http://www.tchernitchenko.com
  * License: GPL2
  */
