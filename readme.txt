@@ -4,7 +4,7 @@ Donate link:
 Tags: categories, minimalistic, widget, plugin, cloud, simple, box, beautiful, design
 Requires at least: 3.5
 Tested up to: 4.1.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,3 +53,7 @@ As simple as that the widget is now activated and is now to be found in your wid
 
 * Updated plugin info, added screenshots.
 * Forced the boxes to align center.
+
+= 1.0.2 =
+
+* Now supporting the use of the themes widget title style.
