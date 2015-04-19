@@ -4,7 +4,7 @@
  * Plugin URI: http://www.tchernitchenko.com
  * Description: A simple and clean category widget.
  * Author: Alexander Tchernitchenko
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author URI: http://www.tchernitchenko.com
  * License: GPL2
  */
@@ -78,37 +78,19 @@ class Simple_Box_Categories extends WP_Widget
 		$c = ! empty( $instance['count'] ) ? '1' : '0';
 		$h_e = ! empty( $instance['hide_empty'] ) ? '1' : '0';
 		$bg_c = ! empty( $instance['background_color'] ) ? $instance['background_color'] : '#72AFE6';
-		$f_t = ! empty( $instance['fancy_title'] ) ? '1' : '0';
 		$d_t = ! empty( $instance['disable_title'] ) ? '1' : '0';
-		$m_b_t = ! empty( $instance['margin_bottom_title'] ) ? self::sbc_px_fix( $instance['margin_bottom_title'] ) : '-14px';
 		$ani = ! empty( $instance['animation'] ) ? '1' : '0';
 		$f_d = ! empty( $instance['fade_dark'] ) ? $instance['fade_dark'] : 'dark';
 		$f_c = ! empty( $instance['font_color'] ) ? $instance['font_color'] : 'white';
 
-		// Set the correct title class
-		if ( $f_t ) {
-			$title_class = "sbc-fancy-title";
-		} else {
-			$title_class = "sbc-title";
-		}
 
 		echo $args['before_widget'];
 
 		if ( $title && $d_t == 0 ) {
-			echo $args['before_title'] . "<h2 class='$title_class'><span>$title</span></p>" . $args['after_title'];
+			echo $args['before_title'] . "<h4 class='widget-title'>$title</h4>" . $args['after_title'];
 		} else {
 			$title = null;
 		}
-
-		if ( $f_t ): ?>
-
-			<style> .sbc-fancy-title { margin-bottom:<?php echo $m_b_t; ?>; } </style>
-
-		<?php else: ?>
-
-			<style> .sbc-title { margin-bottom:<?php echo $m_b_t ?>; } </style>
-
-		<?php endif;
 
 		// Decides the fade value for hovering, see sbc_color_adjust function
 		if ( $f_d === 'dark' ) {
@@ -188,14 +170,11 @@ a.sbc-box:hover {
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['count'] = ! empty( $new_instance['count'] ) ? 1 : 0;
 		$instance['hide_empty'] = ! empty( $new_instance['hide_empty'] ) ? 1 : 0;
-		$instance['fancy_title'] = ! empty( $new_instance['fancy_title'] ) ? 1 : 0;
 		$instance['disable_title'] = ! empty( $new_instance['disable_title'] ) ? 1 : 0;
 		$instance['animation'] = ! empty( $new_instance['animation'] ) ? 1 : 0;
 		$instance['font_color'] = ! empty( $new_instance['font_color'] ) ? $new_instance['font_color'] : 'white';
 		$instance['fade_dark'] = ! empty( $new_instance['fade_dark'] ) ? $new_instance['fade_dark'] : 'dark';
 		$instance['background_color'] = strip_tags( $new_instance['background_color'] );
-		$instance['margin_bottom_title'] = ! empty( $new_instance['margin_bottom_title'] ) ? self::sbc_px_fix( strip_tags( $new_instance['margin_bottom_title'] ) ) : '-14px';
-
 		return $instance;
 	}
 
@@ -204,10 +183,8 @@ a.sbc-box:hover {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'background_color' => '', 'border_radius' => '') );
 		$title = ! empty( $instance['title'] ) ? esc_attr($instance['title']) : 'Categories';
 		$background_color = ! empty( $instance['background_color'] ) ? $instance['background_color'] : '#72AFE6';
-		$margin_bottom_title = ! empty( $instance['margin_bottom_title'] ) ? $instance['margin_bottom_title'] : '-14px';
 		$count = isset($instance['count']) ? (bool) $instance['count'] :false;
 		$hide_empty = isset( $instance['hide_empty'] ) ? (bool) $instance['hide_empty'] : true;
-		$fancy_title = isset( $instance['fancy_title'] ) ? (bool) $instance['fancy_title'] : true;
 		$disable_title = isset( $instance['disable_title'] ) ? (bool) $instance['disable_title'] : false;
 		$animation = isset( $instance['animation'] ) ? (bool) $instance['animation'] : true;
 		$fade_dark = ! empty( $instance['fade_dark'] ) ? $instance['fade_dark'] : 'dark';
@@ -226,9 +203,6 @@ a.sbc-box:hover {
 		<p class='sbc-advanced-options-button'>Advanced Options &darr;</p>
 		<div class="sbc-advanced-options">
 
-		<p><b><label for="<?php echo $this->get_field_id('margin_bottom_title'); ?>"><?php _e( 'Margin bottom on title' ); ?></b></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('margin_bottom_title'); ?>" name="<?php echo $this->get_field_name('margin_bottom_title'); ?>" type="text" value="<?php echo $margin_bottom_title; ?>" /></p>
-
 		<p><b><label for="<?php echo $this->get_field_id('font_color'); ?>"><?php _e( 'Font color' ); ?></label></b><br/>
 		<input type="radio" class="radio" id="<?php echo $this->get_field_id('font_color'); ?>" name="<?php echo $this->get_field_name('font_color'); ?>" value="white" <?php checked( 'white', $font_color ); ?> /> White <br />
 		<input type="radio" class="radio" id="<?php echo $this->get_field_id('font_color'); ?>" name="<?php echo $this->get_field_name('font_color'); ?>" value="black" <?php checked( 'black', $font_color ); ?> /> Black</p>
@@ -238,9 +212,6 @@ a.sbc-box:hover {
 
 		<p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('animation'); ?>" name="<?php echo $this->get_field_name('animation'); ?>"<?php checked( $animation ); ?> />
 		<label for="<?php echo $this->get_field_id('animation'); ?>"><?php _e( 'Enable hover animation' ); ?></label></p>
-
-		<p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('fancy_title'); ?>" name="<?php echo $this->get_field_name('fancy_title'); ?>"<?php checked( $fancy_title ); ?> />
-		<label for="<?php echo $this->get_field_id('fancy_title'); ?>"><?php _e( 'Enable fancy title' ); ?></label></p>
 
 		<p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('disable_title'); ?>" name="<?php echo $this->get_field_name('disable_title'); ?>"<?php checked( $disable_title ); ?> />
 		<label for="<?php echo $this->get_field_id('disable_title'); ?>"><?php _e( 'Remove the title' ); ?></label></p>

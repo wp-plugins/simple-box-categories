@@ -4,50 +4,9 @@
 * Plugin and all its components made by Alexander Tchernitchenko ( www.tchernitchenko.com/simple-box-categories )
 */
 
-
 /* Import Open Sans font */
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic");
 
-
-/**
-* #.# Title styling
-*
-* General styling of the fancy title option.
-*/
-.sbc-fancy-title {
-  font-family: "Open Sans", sans-serif;
-  font-size: 12px;
-  font-weight: 300;
-  letter-spacing: 1px;
-  line-height: 0.5;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.sbc-fancy-title span {
-  display: inline-block;
-  position: relative;
-}
-
-.sbc-fancy-title span:before,
-.sbc-fancy-title span:after {
-  border-bottom: 1px solid #444;
-  content: "";
-  height: 5px;
-  position: absolute;
-  top: 0;
-  width: 15%;
-}
-
-.sbc-fancy-title span:before {
-  margin-right: 10px;
-  right: 100%;
-}
-
-.sbc-fancy-title span:after {
-  left: 100%;
-  margin-left: 10px;
-}
 
 /**
 * #.# Admin menu styling

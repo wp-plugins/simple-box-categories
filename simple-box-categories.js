@@ -6,7 +6,6 @@ jQuery(document).ready(function($) {
   });
 
 
-
   $(".sbc-advanced-options-button").on("click", function() {
     $(".sbc-advanced-options").toggle();
   });
